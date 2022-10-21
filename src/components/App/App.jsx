@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import {useState,useEffect} from 'react';
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
+import GalleryList from '../GalleryList/GalleryList';
 
 function App() {
 
   let [listOfGalleryItems,setlistOfGalleryItems] = useState([]);
+  
 
   //on load
   useEffect(()=>{
@@ -31,28 +32,15 @@ function App() {
     });
   };
 
+  
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <p>Gallery goes here</p>
-        {/* <img src = "https://picsum.photos/id/236/200"/> */}
-        {listOfGalleryItems.map(gallItem=>(
-          <div className={'ImageDiv'} key={gallItem.id} >
-            <figure>
-              <img src={gallItem.path} alt={gallItem.description} />
-              <figcaption>
-                {gallItem.description}
-              </figcaption>
-              <div className='bg-dark'>
-                <Button variant="dark" size="sm">Like</Button>
-              </div>
-              
-            </figure>
-            
-          </div>
-        ))}
+        {/* {galleryhere} */}
+        <GalleryList listOfGalleryItems={listOfGalleryItems}/>
       </div>
     );
 }
