@@ -45,7 +45,10 @@ function App() {
               <figcaption>
                 {gallItem.description}
               </figcaption>
-              <Button variant="dark" size="sm">Primary</Button>
+              <div className='bg-dark'>
+                <Button variant="dark" size="sm">Like</Button>
+              </div>
+              
             </figure>
             
           </div>
@@ -55,9 +58,3 @@ function App() {
 }
 
 export default App;
-
-
-// <figure key={item.id}>
-//             <img src={item.path} alt={item.description}/>
-//             <figcaption>Likes: {item.likes}</figcaption>
-//           </figure>
