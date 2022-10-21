@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align:center;
 }
 
 .App-header {
@@ -13,3 +13,37 @@
   font-size: 1.5em;
 }
 
+.ImageDiv{
+  background-color: white;
+  
+}
+figure {
+  border: thin #c0c0c0 solid;
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  max-width: 200px;
+  margin: auto;
+}
+figcaption {
+  background-color: #222;
+  color: #fff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+  
+}
+.Gallery{
+  display: flex;
+  justify-content: center;
+  /* flex-flow: column; */
+  align-items: center;
+  flex-wrap: wrap;
+  
+}
+.figCaptionControl{
+  display: none;
+}
+.imgControl{
+  display:none;
+}
