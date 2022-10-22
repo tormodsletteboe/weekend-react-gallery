@@ -6,7 +6,6 @@ const pool = require('../modules/pool');
 
 // PUT Route, incrementing the likes with 1 per click
 router.put('/like/:id', (req, res) => {
-    console.log('In PUT ',req.params.id);
     const sqlText =`
         UPDATE "galleryList"
         SET "likes"="likes"+1
