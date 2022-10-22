@@ -1,7 +1,6 @@
 -- CREATE DATABASE: react_gallery
 DROP TABLE IF EXISTS "galleryList";
--- Don't forget to add your create table SQL 
--- It is also helpful to include some test data
+
 CREATE TABLE "galleryList" (
     "id" SERIAL PRIMARY KEY,
     "path" VARCHAR(80), 

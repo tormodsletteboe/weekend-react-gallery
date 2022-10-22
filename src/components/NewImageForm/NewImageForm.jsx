@@ -1,32 +1,43 @@
 import {useState} from "react";
 
 function NewImageForm({addImageToGallery}){
+
+    //the state of this component
     let [url,setUrl] = useState('');
     let [alt,setAlt]=useState('');
 
+    //onSubmitClick
+    //executed when the user clicks or hits enter button 
     const onSubmitClick =(evt)=>{
         evt.preventDefault();
-        console.log('in onsubmitclick');
+       
+        //get the data to be sent to the database
         let newImage = {
             path: url,
             description: alt
         };
-        console.log('in onsubmitclick');
+        
+        //callback to app.jsx addImage function
         addImageToGallery(newImage);
-        // setUrl('');
-        // setAlt('');
+
+        //clear user input
+        setUrl('');
+        setAlt('');
     };
 
+    //handleOnUrlChange
+    //handle any change to the url input, update state url for any change
     let handleOnUrlChange = (evt)=>{
-        console.log('in url',evt.target.value);
         setUrl(evt.target.value);
     };
 
+    //handleOnAltChange
+    //handle any change to the description input, update alt state for any change
     let handleOnAltChange =(evt)=>{
-        console.log('in alt',evt.target.value);
         setAlt(evt.target.value);
     };
 
+    //render the form to the DOM
     return(
         <>
             <form onSubmit={onSubmitClick}>
