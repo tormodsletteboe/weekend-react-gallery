@@ -1,7 +1,7 @@
 
 import GalleryItem from "../GalleryItem/GalleryItem";
 
-function GalleryList({listOfGalleryItems}){
+function GalleryList({listOfGalleryItems,handleLikes}){
 
 
    
@@ -10,7 +10,7 @@ function GalleryList({listOfGalleryItems}){
         <>
             <div className='Gallery'>
             {listOfGalleryItems.map(gallItem=>(
-                <GalleryItem key={gallItem.id} gallItem={gallItem} />
+                <GalleryItem key={gallItem.id} gallItem={gallItem} handleLikes={handleLikes}/>
             ))}
             </div>
         </>
