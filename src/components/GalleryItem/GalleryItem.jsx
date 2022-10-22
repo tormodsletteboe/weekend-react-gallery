@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import {useState} from 'react';
-
+import Swal from 'sweetalert2'
 
 function GalleryItem({gallItem,handleLikes,handleDelete}){
 
@@ -20,7 +20,21 @@ function GalleryItem({gallItem,handleLikes,handleDelete}){
    };
 
    let onClickDelete=()=>{
-    handleDelete(gallItem);
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            handleDelete(gallItem);
+        }
+      })
+
+   
    };
 
     return(

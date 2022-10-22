@@ -4,36 +4,40 @@ import {useState,useEffect} from 'react';
 import axios from "axios";
 import GalleryList from '../GalleryList/GalleryList';
 import NewImageForm from '../NewImageForm/NewImageForm';
+
+//App
+//"main" function
 function App() {
 
+  //the state of Gallery of My Life
   let [listOfGalleryItems,setlistOfGalleryItems] = useState([]);
   
 
   //on load
   useEffect(()=>{
-    console.log('in useeffect');
+    //get the galleryItems from the database
     getGalleryItems();
   },[]);
 
-  //get gallery items from gallery.data.js
+  //getGalleryItems
+  //get gallery items from the database and set the app state
   const getGalleryItems = ()=>{
-    console.log('in getGalleryItems');
     axios({
       method: 'GET',
       url: '/gallery'
     })
     .then((response)=>{
-      console.log('data',response.data)
       setlistOfGalleryItems(response.data);
-      
     })
     .catch((err)=>{
       console.error('axios GET error',err);
     });
   };
 
+  //updateLikesCount
+  //update the like count of a specific gallery item  when Like button on that specific gallery item is clicked
   const updateLikesCount = (galleryItem)=>{
-    console.log('galllllllitem.id',galleryItem.id);
+  
     axios({
       method: 'PUT',
       url: `/gallery/like/${galleryItem.id}`
@@ -48,15 +52,16 @@ function App() {
     });
   };
   
+  //addImage
+  //add a new image to the gallery
   const addImage = (galleryItem)=>{
-    console.log('in addimage')
     axios({
       method: 'POST',
       url: `/gallery`,
       data: galleryItem
     })
     .then((response)=>{
-      console.log('data POST',response)
+      //update the state by making a call to the database
       getGalleryItems();
       
     })
@@ -65,6 +70,8 @@ function App() {
     });
   };
   
+  //deleteImage
+  //remove an image from the gallery
   const deleteImage = (galleryItem)=>{
     console.log('in deleteImage')
     axios({
@@ -72,20 +79,23 @@ function App() {
       url: `/gallery/${galleryItem.id}`,
     })
     .then((response)=>{
-      console.log(' axios DELETE',response)
+      //image has been removed, update the state by making a call to the database
       getGalleryItems();
     })
     .catch((err)=>{
       console.error('axios DELETE error',err);
     });
   };
+
+  //render the Gallery with its components to the DOM
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
+        {/* {Input form here} */}
         <NewImageForm addImageToGallery={addImage}/>
-        {/* {galleryhere} */}
+        {/* {gallery here} */}
         <GalleryList listOfGalleryItems={listOfGalleryItems} handleLikes={updateLikesCount} handleDelete={deleteImage} />
       </div>
     );

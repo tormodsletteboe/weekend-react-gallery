@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
-// PUT Route
+// PUT Route, increment the likes with 1 per click
 router.put('/like/:id', (req, res) => {
     console.log('In PUT ',req.params.id);
     const sqlText =`
@@ -24,7 +24,6 @@ router.put('/like/:id', (req, res) => {
 
 // POST Route
 router.post('/', (req, res) => {
-    console.log('In POST ',req.params.id);
     const sqlText =`
         INSERT INTO "galleryList" ("path","description")
         VALUES ($1,$2);
@@ -57,7 +56,7 @@ router.get('/', (req, res) => {
 
 // delete Route
 router.delete('/:id', (req, res) => {
-    console.log('In router DELETE ',req.params.id);
+    //console.log('In router DELETE ',req.params.id);
     const sqlText =`
         DELETE FROM "galleryList"
         WHERE "id"=$1;
