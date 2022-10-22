@@ -7,17 +7,22 @@ function NewImageForm({addImageToGallery}){
     let onSubmitClick =(evt)=>{
         evt.preventdefault();
         let newImage = {
-            url: url,
-            alt: alt
+            path: url,
+            description: alt
         };
+        console.log('in onsubmitclick');
         addImageToGallery(newImage);
+        setUrl('');
+        setAlt('');
     };
 
     let handleOnUrlChange = (evt)=>{
+        console.log('in url',evt.target.value);
         setUrl(evt.target.value);
     };
 
     let handleOnAltChange =(evt)=>{
+        console.log('in alt',evt.target.value);
         setAlt(evt.target.value);
     };
 

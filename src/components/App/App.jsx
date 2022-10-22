@@ -49,7 +49,7 @@ function App() {
   };
   
   let addImage = (galleryItem)=>{
-   
+    console.log('in addimage')
     axios({
       method: 'POST',
       url: `/gallery`,
