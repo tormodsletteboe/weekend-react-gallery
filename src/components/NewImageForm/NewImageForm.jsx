@@ -30,9 +30,9 @@ function NewImageForm({addImageToGallery}){
     return(
         <>
             <form onSubmit={onSubmitClick}>
-                <input value={url} onChange={handleOnUrlChange} type="text" placeholder="url"/>
-                <input value={alt} onChange={handleOnAltChange} type="text" placeholder="enter accessibility text" />
-                <button type="submit">Submit</button>
+                <input  value={url} onChange={handleOnUrlChange} type="text" placeholder="url..." required/>
+                <input  value={alt} onChange={handleOnAltChange} type="text" placeholder="accessibility text..." required/>
+                <button className="bg-light square glow" type="submit">Submit</button>
             </form>
         </>
     );

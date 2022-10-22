@@ -55,4 +55,21 @@ router.get('/', (req, res) => {
         });
 }); // END GET Route
 
+// delete Route
+router.delete('/:id', (req, res) => {
+    console.log('In router DELETE ',req.params.id);
+    const sqlText =`
+        DELETE FROM "galleryList"
+        WHERE "id"=$1;
+    `;
+    pool.query(sqlText,[req.params.id])
+        .then((response)=>{
+            res.sendStatus(200);
+        })
+        .catch((err)=>{
+            res.sendStatus(500);
+        });
+    
+}); // END delete Route
+
 module.exports = router;

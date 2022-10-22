@@ -65,7 +65,20 @@ function App() {
     });
   };
   
-
+  const deleteImage = (galleryItem)=>{
+    console.log('in deleteImage')
+    axios({
+      method: 'DELETE',
+      url: `/gallery/${galleryItem.id}`,
+    })
+    .then((response)=>{
+      console.log(' axios DELETE',response)
+      getGalleryItems();
+    })
+    .catch((err)=>{
+      console.error('axios DELETE error',err);
+    });
+  };
     return (
       <div className="App">
         <header className="App-header">
@@ -73,7 +86,7 @@ function App() {
         </header>
         <NewImageForm addImageToGallery={addImage}/>
         {/* {galleryhere} */}
-        <GalleryList listOfGalleryItems={listOfGalleryItems} handleLikes={updateLikesCount} />
+        <GalleryList listOfGalleryItems={listOfGalleryItems} handleLikes={updateLikesCount} handleDelete={deleteImage} />
       </div>
     );
 }
