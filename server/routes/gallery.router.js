@@ -26,9 +26,8 @@ router.put('/like/:id', (req, res) => {
 router.post('/', (req, res) => {
     console.log('In POST ',req.params.id);
     const sqlText =`
-        INSERT INTO "galleryList"
-        VALUES ("path","description")
-        ($1,$2);
+        INSERT INTO "galleryList" ("path","description")
+        VALUES ($1,$2);
     `;
     pool.query(sqlText,[req.body.path,req.body.description])
         .then((response)=>{
@@ -51,6 +50,7 @@ router.get('/', (req, res) => {
             res.send(response.rows);
         })
         .catch((err)=>{
+            console.log('is it here');
             res.sendStatus(500);
         });
 }); // END GET Route

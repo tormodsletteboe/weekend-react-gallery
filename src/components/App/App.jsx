@@ -16,7 +16,7 @@ function App() {
   },[]);
 
   //get gallery items from gallery.data.js
-  let getGalleryItems = ()=>{
+  const getGalleryItems = ()=>{
     console.log('in getGalleryItems');
     axios({
       method: 'GET',
@@ -32,7 +32,7 @@ function App() {
     });
   };
 
-  let updateLikesCount = (galleryItem)=>{
+  const updateLikesCount = (galleryItem)=>{
     console.log('galllllllitem.id',galleryItem.id);
     axios({
       method: 'PUT',
@@ -48,7 +48,7 @@ function App() {
     });
   };
   
-  let addImage = (galleryItem)=>{
+  const addImage = (galleryItem)=>{
     console.log('in addimage')
     axios({
       method: 'POST',
@@ -61,7 +61,7 @@ function App() {
       
     })
     .catch((err)=>{
-      console.error('axios PUT error',err);
+      console.error('axios POST error',err);
     });
   };
   

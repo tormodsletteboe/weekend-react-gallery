@@ -4,16 +4,17 @@ function NewImageForm({addImageToGallery}){
     let [url,setUrl] = useState('');
     let [alt,setAlt]=useState('');
 
-    let onSubmitClick =(evt)=>{
-        evt.preventdefault();
+    const onSubmitClick =(evt)=>{
+        evt.preventDefault();
+        console.log('in onsubmitclick');
         let newImage = {
             path: url,
             description: alt
         };
         console.log('in onsubmitclick');
         addImageToGallery(newImage);
-        setUrl('');
-        setAlt('');
+        // setUrl('');
+        // setAlt('');
     };
 
     let handleOnUrlChange = (evt)=>{
