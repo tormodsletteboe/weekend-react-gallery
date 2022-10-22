@@ -14,7 +14,10 @@ function GalleryItem({gallItem,handleLikes}){
         setActive(!isActive);
       };
 
-   
+   let onClickLikes =()=>{
+        console.log('gal item id',gallItem.id);
+        handleLikes(gallItem);
+   };
 
     return(
         <>
@@ -25,7 +28,7 @@ function GalleryItem({gallItem,handleLikes}){
                         {gallItem.description}
                     </figcaption>
                     <div className='bg-dark'>
-                        <Button onClick={handleLikes} variant="dark" size="sm"> Likes 👍</Button>
+                        <Button onClick={onClickLikes} variant="dark" size="sm">{gallItem.likes} Likes 👍</Button>
                     </div>
                 </figure>
             </div>

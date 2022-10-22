@@ -10,7 +10,7 @@ function GalleryList({listOfGalleryItems,handleLikes}){
         <>
             <div className='Gallery'>
             {listOfGalleryItems.map(gallItem=>(
-                <GalleryItem key={gallItem.id} gallItem={gallItem} />
+                <GalleryItem key={gallItem.id} gallItem={gallItem} handleLikes={handleLikes}/>
             ))}
             </div>
         </>

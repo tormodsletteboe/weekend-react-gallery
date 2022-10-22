@@ -33,12 +33,13 @@ function App() {
   };
 
   let updateLikesCount = (galleryItem)=>{
+    console.log('galllllllitem.id',galleryItem.id);
     axios({
       method: 'PUT',
       url: `/gallery/like/${galleryItem.id}`
     })
     .then((response)=>{
-      console.log('data',response.data)
+      console.log('data PUT',response)
       getGalleryItems();
       
     })
