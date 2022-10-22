@@ -1,7 +1,7 @@
 
 import GalleryItem from "../GalleryItem/GalleryItem";
 
-function GalleryList({listOfGalleryItems}){
+function GalleryList({listOfGalleryItems,handleLikes}){
 
 
    

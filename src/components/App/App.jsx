@@ -32,6 +32,22 @@ function App() {
     });
   };
 
+  let updateLikesCount = (galleryItem)=>{
+    axios({
+      method: 'PUT',
+      url: `/gallery/like/${galleryItem.id}`
+    })
+    .then((response)=>{
+      console.log('data',response.data)
+      getGalleryItems();
+      
+    })
+    .catch((err)=>{
+      console.error('axios PUT error',err);
+    });
+  };
+  
+
   
 
     return (
@@ -40,7 +56,7 @@ function App() {
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
         {/* {galleryhere} */}
-        <GalleryList listOfGalleryItems={listOfGalleryItems}/>
+        <GalleryList listOfGalleryItems={listOfGalleryItems} handleLikes={updateLikesCount} />
       </div>
     );
 }

@@ -2,10 +2,10 @@ import Button from 'react-bootstrap/Button';
 import {useState} from 'react';
 
 
-function GalleryItem({gallItem}){
+function GalleryItem({gallItem,handleLikes}){
 
     let [isActive,setActive]=useState('false');
-    let [count,setCount] = useState(0);
+    
 
     let handleOnClickImg = ()=>{
         // console.log('gallItem',gallItem.target.clientWidth);
@@ -14,9 +14,7 @@ function GalleryItem({gallItem}){
         setActive(!isActive);
       };
 
-    let handleOnButtonClick = ()=>{
-        setCount(count+1);
-    };
+   
 
     return(
         <>
@@ -27,7 +25,7 @@ function GalleryItem({gallItem}){
                         {gallItem.description}
                     </figcaption>
                     <div className='bg-dark'>
-                        <Button onClick={handleOnButtonClick} variant="dark" size="sm">{count>0 ? count : ''} Likes 👍</Button>
+                        <Button onClick={handleLikes} variant="dark" size="sm"> Likes 👍</Button>
                     </div>
                 </figure>
             </div>
