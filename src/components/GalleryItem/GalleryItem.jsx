@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import {useState} from 'react';
 
 
-function GalleryItem({gallItem,handleLikes}){
+function GalleryItem({gallItem,handleLikes,handleDelete}){
 
     let [isActive,setActive]=useState('false');
     
@@ -19,16 +19,21 @@ function GalleryItem({gallItem,handleLikes}){
         handleLikes(gallItem);
    };
 
+   let onClickDelete=()=>{
+    handleDelete(gallItem);
+   };
+
     return(
         <>
         <div className={'ImageDiv'} >
                 <figure>
-                    <img  onClick={handleOnClickImg} src={gallItem.path} alt={gallItem.description} />
+                    <img  onClick={handleOnClickImg} src={gallItem.path} alt={gallItem.description} style={{height : 188, width : 188}} />
                     <figcaption className={isActive ? 'figCaptionControl' : null}>
                         {gallItem.description}
                     </figcaption>
                     <div className='bg-dark'>
                         <Button onClick={onClickLikes} variant="dark" size="sm">{gallItem.likes} Likes 👍</Button>
+                        <Button onClick={onClickDelete} variant="dark" size="sm">X</Button>
                     </div>
                 </figure>
             </div>
