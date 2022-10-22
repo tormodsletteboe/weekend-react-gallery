@@ -2,24 +2,29 @@ import Button from 'react-bootstrap/Button';
 import {useState} from 'react';
 import Swal from 'sweetalert2'
 
+//GalleryItem
+//1 image with caption, like button and remove button
 function GalleryItem({gallItem,handleLikes,handleDelete}){
 
+    //control what to render, caption or no caption, used with image click
     let [isActive,setActive]=useState('false');
     
-
+    //handleOnClickImg
+    //toggle caption on or off
     let handleOnClickImg = ()=>{
-        // console.log('gallItem',gallItem.target.clientWidth);
-        // console.log('gallItem',gallItem.target.clientHeight);
-        // gallItem.target.toggleClass('figCaptionControl');
         setActive(!isActive);
       };
 
+   //onClickLikes
+   //calls back to app.jsx updateLikesCount to increase the likes count for this gallery item in the database
    let onClickLikes =()=>{
-        console.log('gal item id',gallItem.id);
         handleLikes(gallItem);
    };
 
+   //onClickDelete
+   //calls back to app.jsx deleteImage to remove gallery item from the database
    let onClickDelete=()=>{
+    //ask user if they are sure using this sweetalert2 dialog box
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -29,7 +34,9 @@ function GalleryItem({gallItem,handleLikes,handleDelete}){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
+        //if user is sure, remove gallery item
         if (result.isConfirmed) {
+            //the actual callback to app.jsx deleteImage
             handleDelete(gallItem);
         }
       })
@@ -37,6 +44,7 @@ function GalleryItem({gallItem,handleLikes,handleDelete}){
    
    };
 
+   //render Gallery item to the dom
     return(
         <>
         <div className={'ImageDiv'} >
