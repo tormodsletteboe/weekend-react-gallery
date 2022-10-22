@@ -3,7 +3,7 @@ import './App.css';
 import {useState,useEffect} from 'react';
 import axios from "axios";
 import GalleryList from '../GalleryList/GalleryList';
-
+import NewImageForm from '../NewImageForm/NewImageForm';
 function App() {
 
   let [listOfGalleryItems,setlistOfGalleryItems] = useState([]);
@@ -48,7 +48,22 @@ function App() {
     });
   };
   
-
+  let addImage = (galleryItem)=>{
+   
+    axios({
+      method: 'POST',
+      url: `/gallery`,
+      data: galleryItem
+    })
+    .then((response)=>{
+      console.log('data POST',response)
+      getGalleryItems();
+      
+    })
+    .catch((err)=>{
+      console.error('axios PUT error',err);
+    });
+  };
   
 
     return (
@@ -56,6 +71,7 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
+        <NewImageForm addImageToGallery={addImage}/>
         {/* {galleryhere} */}
         <GalleryList listOfGalleryItems={listOfGalleryItems} handleLikes={updateLikesCount} />
       </div>
