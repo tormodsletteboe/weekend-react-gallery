@@ -9,7 +9,7 @@ import NewImageForm from '../NewImageForm/NewImageForm';
 //"main" function
 function App() {
 
-  //the state of Gallery of My Life
+  //the App component state
   let [listOfGalleryItems,setlistOfGalleryItems] = useState([]);
   
 
